@@ -18,5 +18,10 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/madbence/node-mock-fun/issues"
+  },
+  "devDependencies": {
+    "should": "~2.1.1",
+    "mocha": "~1.16.2",
+    "istanbul": "~0.2.3"
   }
 }
