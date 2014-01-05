@@ -21,8 +21,25 @@ describe('override', function() {
     obj.prop.should.not.equal(fun);
   });
   describe('overridden function', function() {
-    it('should have called property');
-    it('should have calledTimes property');
+    var obj, called, ocalled;
+    var mock = function() { called = true; }
+    beforeEach(function() {
+      called = false;
+      ocalled = false;
+      var o = {
+        p: function() { ocalled = true; }
+      };
+      override(o, 'p', mock)();
+      obj = o;
+    });
+    it('should have called property', function() {
+      should.exist(obj.p.called);
+      obj.p.called.should.be.false;
+    });
+    it('should have calledTimes property', function() {
+      should.exist(obj.p.calledTimes);
+      obj.p.calledTimes.should.equal(0);
+    });
     it('should update called property if function is called');
     it('should update calledTimes property if function is called');
     it('should not call the original function');
