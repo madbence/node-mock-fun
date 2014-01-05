@@ -40,8 +40,16 @@ describe('override', function() {
       should.exist(obj.p.calledTimes);
       obj.p.calledTimes.should.equal(0);
     });
-    it('should update called property if function is called');
-    it('should update calledTimes property if function is called');
+    it('should update called property if function is called', function() {
+      obj.p();
+      obj.p.called.should.be.true;
+    });
+    it('should update calledTimes property if function is called', function() {
+      obj.p();
+      obj.p.calledTimes.should.equal(1);
+      obj.p();
+      obj.p.calledTimes.should.equal(2);
+    });
     it('should not call the original function');
     it('should call the override function');
   });
