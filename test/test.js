@@ -58,6 +58,16 @@ describe('override', function() {
       obj.p();
       called.should.be.true;
     });
+    it('should call the override function with the correct parameters', function() {
+      var obj = {
+        p: function() {},
+      };
+      override(obj, 'p', function(a, b) {
+        a.should.equal(1);
+        b.should.equal(2);
+      })();
+      obj.p(1, 2);
+    });
   });
 });
 
