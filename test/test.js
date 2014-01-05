@@ -4,7 +4,22 @@ var restore = mf.restore;
 var should = require('should');
 
 describe('override', function() {
-  it('should return an overridden function');
+  it('should return a function', function() {
+    var fun = function() {}
+    var obj = {
+      prop: fun,
+    };
+    override(obj, 'prop', function() {}).should.be.an.instanceOf(Function);
+  });
+  it('should return a function that overrides the given function', function() {
+    var fun = function() {}
+    var obj = {
+      prop: fun,
+    };
+    var mock = function() {};
+    override(obj, 'prop', mock)();
+    obj.prop.should.not.equal(fun);
+  });
   describe('overridden function', function() {
     it('should have called property');
     it('should have calledTimes property');
