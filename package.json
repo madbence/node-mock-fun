@@ -1,0 +1,22 @@
+{
+  "name": "mock-fun",
+  "version": "0.0.0",
+  "description": "Mock functions",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/mocha/bin/mocha -R test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/madbence/node-mock-fun.git"
+  },
+  "keywords": [
+    "mock",
+    "test"
+  ],
+  "author": "Bence Dányi <madbence@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/madbence/node-mock-fun/issues"
+  }
+}
