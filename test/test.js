@@ -50,8 +50,14 @@ describe('override', function() {
       obj.p();
       obj.p.calledTimes.should.equal(2);
     });
-    it('should not call the original function');
-    it('should call the override function');
+    it('should not call the original function', function() {
+      obj.p();
+      ocalled.should.be.false;
+    });
+    it('should call the override function', function() {
+      obj.p();
+      called.should.be.true;
+    });
   });
 });
 
