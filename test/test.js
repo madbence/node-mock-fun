@@ -5,14 +5,14 @@ var should = require('should');
 
 describe('override', function() {
   it('should return a function', function() {
-    var fun = function() {}
+    var fun = function() {};
     var obj = {
       prop: fun,
     };
     override(obj, 'prop', function() {}).should.be.an.instanceOf(Function);
   });
   it('should return a function that overrides the given function', function() {
-    var fun = function() {}
+    var fun = function() {};
     var obj = {
       prop: fun,
     };
@@ -22,7 +22,7 @@ describe('override', function() {
   });
   describe('overridden function', function() {
     var obj, called, ocalled;
-    var mock = function() { called = true; }
+    var mock = function() { called = true; };
     beforeEach(function() {
       called = false;
       ocalled = false;
