@@ -1,4 +1,4 @@
-node-mock-fun
+node-mock-fun [![Build Status](https://travis-ci.org/madbence/node-mock-fun.png?branch=master)](https://travis-ci.org/madbence/node-mock-fun)
 =============
 
 Mock functions
