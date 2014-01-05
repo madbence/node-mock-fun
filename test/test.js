@@ -68,6 +68,15 @@ describe('override', function() {
       })();
       obj.p(1, 2);
     });
+    it('should call the override function with the correct context', function() {
+      var obj = {
+        p: function() {},
+      };
+      override(obj, 'p', function() {
+        this.should.be.equal(obj);
+      })();
+      obj.p();
+    });
   });
 });
 
