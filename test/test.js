@@ -82,5 +82,12 @@ describe('override', function() {
 
 describe('restore', function() {
   it('should restore the overridden function', function() {
+    var f = function() {};
+    var obj = {
+      p: f
+    };
+    override(obj, 'p', function(){});
+    restore(obj, 'p');
+    obj.p.should.equal(f);
   });
 });
