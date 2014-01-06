@@ -97,4 +97,14 @@ describe('restore', function() {
     restore(obj, 'p')();
     obj.p.should.equal(f);
   });
+  it('should restore nested overrides, if needed', function() {
+    var f = function() {};
+    var obj = {
+      p: f
+    };
+    override(obj, 'p')(function(){});
+    override(obj, 'p')(function(){});
+    restore(obj, 'p', true)();
+    obj.p.should.equal(f);
+  });
 });

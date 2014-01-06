@@ -24,8 +24,11 @@ exports.override = function override(obj, prop, fun) {
   }
 };
 
-exports.restore = function restore(obj, prop) {
+exports.restore = function restore(obj, prop, full) {
   return function() {
     obj[prop] = obj[prop].old;
+    while(full && obj[prop].old) {
+      obj[prop] = obj[prop].old;
+    }
   };
 };
