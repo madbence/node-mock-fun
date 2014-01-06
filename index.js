@@ -1,25 +1,29 @@
-/**
- * Returns a `before` hook, that overrides the given property of `obj`
- * with `fun`.
- */
+/* jshint plusplus: false */
+
 exports.override = function override(obj, prop, fun) {
-  return function() {
+  function mock(fun) {
     var old = obj[prop];
-    var mock = function() {
-      mock.called = true;
-      mock.calledTimes++;
+    var wrapper = function() {
+      wrapper.called = true;
+      wrapper.calledTimes++;
       fun.apply(this, arguments);
     };
-    mock.called = false;
-    mock.calledTimes = 0;
-    mock.old = old;
-    obj[prop] = mock;
-  };
+    wrapper.called = false;
+    wrapper.calledTimes = 0;
+    wrapper.old = old;
+    obj[prop] = wrapper;
+  }
+  if(fun) {
+    return function() {
+      mock(fun);
+    };
+  } else {
+    return function(fun) {
+      mock(fun);
+    };
+  }
 };
 
-/**
- * Return an `after` hook function, that restores the overridden function.
- */
 exports.restore = function restore(obj, prop) {
   return function() {
     obj[prop] = obj[prop].old;
