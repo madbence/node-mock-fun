@@ -6,7 +6,7 @@ exports.override = function override(obj, prop, fun) {
     var wrapper = function() {
       wrapper.called = true;
       wrapper.calledTimes++;
-      fun.apply(this, arguments);
+      return fun.apply(this, arguments);
     };
     wrapper.called = false;
     wrapper.calledTimes = 0;
