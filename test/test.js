@@ -58,6 +58,13 @@ describe('override', function() {
       obj.p();
       called.should.be.true;
     });
+    it('should call the global override function if provided', function() {
+      var c = false;
+      override(obj, 'p', function() { c = true; })();
+      obj.p();
+      c.should.be.true;
+      restore(obj, 'p')();
+    });
     it('should call the override function with the correct parameters', function() {
       var obj = {
         p: function() {},
