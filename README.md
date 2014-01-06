@@ -1,4 +1,4 @@
-node-mock-fun [![Build Status](https://travis-ci.org/madbence/node-mock-fun.png?branch=master)](https://travis-ci.org/madbence/node-mock-fun)
+node-mock-fun [![Build Status](https://travis-ci.org/madbence/node-mock-fun.png?branch=master)](https://travis-ci.org/madbence/node-mock-fun) [![Coverage Status](https://coveralls.io/repos/madbence/node-mock-fun/badge.png)](https://coveralls.io/r/madbence/node-mock-fun)
 =============
 
 Mock functions
