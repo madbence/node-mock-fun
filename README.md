@@ -13,7 +13,9 @@ npm install mock-fun
 
 Use with mocha :3
 
-## `.override(obj, prop)`
+## `.override(obj, prop[, glob])`
+
+*Without* `glob` function:
 
 Returns a `hook(fun)` function, that can override `prop` in `obj`
 with a wrapper function that calls `fun` transparently
@@ -21,10 +23,18 @@ with a wrapper function that calls `fun` transparently
 `called` and `calledTimes` property.
 `fun` defaults to noop.
 
-## `.restore(obj, prop)`
+*With* `glob`:
+
+Returns a `hook` function that overrides `prop` in `obj`
+with a wrapper function that calls `glob` transparently. Same as above.
+You should use this as a `before/beforeEach` hook.
+
+## `.restore(obj, prop[, full])`
 
 Returns a `hook` function that restores the original function.
-You should use it as an `afterEach` hook.
+You should use it as an `after/afterEach` hook.
+
+Set `full` to restore nested overrides.
 
 ## Example
 
