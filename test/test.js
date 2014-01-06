@@ -9,7 +9,7 @@ describe('override', function() {
     var obj = {
       prop: fun,
     };
-    override(obj, 'prop', function() {}).should.be.an.instanceOf(Function);
+    override(obj, 'prop').should.be.an.instanceOf(Function);
   });
   it('should return a function that overrides the given function', function() {
     var fun = function() {};
@@ -17,7 +17,7 @@ describe('override', function() {
       prop: fun,
     };
     var mock = function() {};
-    override(obj, 'prop', mock)();
+    override(obj, 'prop')(mock);
     obj.prop.should.not.equal(fun);
   });
   describe('overridden function', function() {
@@ -29,7 +29,7 @@ describe('override', function() {
       var o = {
         p: function() { ocalled = true; }
       };
-      override(o, 'p', mock)();
+      override(o, 'p')(mock);
       obj = o;
     });
     it('should have called property', function() {
@@ -62,19 +62,19 @@ describe('override', function() {
       var obj = {
         p: function() {},
       };
-      override(obj, 'p', function(a, b) {
+      override(obj, 'p')(function(a, b) {
         a.should.equal(1);
         b.should.equal(2);
-      })();
+      });
       obj.p(1, 2);
     });
     it('should call the override function with the correct context', function() {
       var obj = {
         p: function() {},
       };
-      override(obj, 'p', function() {
+      override(obj, 'p')(function() {
         this.should.be.equal(obj);
-      })();
+      });
       obj.p();
     });
   });
@@ -86,8 +86,8 @@ describe('restore', function() {
     var obj = {
       p: f
     };
-    override(obj, 'p', function(){});
-    restore(obj, 'p');
+    override(obj, 'p')(function(){});
+    restore(obj, 'p')();
     obj.p.should.equal(f);
   });
 });
